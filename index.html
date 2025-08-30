@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" data-theme="auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>AfriCars — Secure & Comfortable, Uber‑style Rides</title>
+    <meta
+      name="description"
+      content="Sophisticated, elegant Uber‑style booking with AfriCars. Book in seconds; transparent pricing and quick confirmation."
+    />
+    <meta
+      name="theme-color"
+      content="#0B1218"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta
+      name="theme-color"
+      content="#ffffff"
+      media="(prefers-color-scheme: light)"
+    />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+    <noscript
+      ><style>
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style></noscript
+    >
+    <script>
+      document.documentElement.classList.remove("no-js");
+    </script>
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <header class="site-header" role="banner">
+      <div class="wrap">
+        <button
+          class="menu-toggle btn ghost"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          aria-label="Open menu"
+        >
+          <svg
+            class="burger"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+          <span class="visually-hidden">Menu</span>
+        </button>
+        <a class="brand" href="#home" aria-label="AfriCars home">
+          <img
+            src="assets/africars-logo.svg"
+            alt="AfriCars logo"
+            class="logo"
+          />
+          <strong>AfriCars</strong>
+        </a>
+        <nav class="site-nav hide-mobile" aria-label="Primary">
+          <a class="btn ghost" href="#book">Book</a>
+          <a class="btn ghost" href="#pricing">Pricing</a>
+          <a class="btn ghost" href="#trust">Trust</a>
+          <a class="btn ghost" href="#contact">Contact</a>
+          <a
+            class="btn ghost"
+            href="https://www.instagram.com/myafricars"
+            target="_blank"
+            rel="noopener"
+            aria-label="AfriCars on Instagram"
+            >Instagram</a
+          >
+          <button
+            id="themeToggle"
+            class="btn ghost"
+            aria-pressed="false"
+            aria-label="Toggle theme"
+          >
+            Theme
+          </button>
+          <a class="btn outline" href="tel:+2347013502404"
+            >Call +234-701-350-2404</a
+          >
+          <a
+            class="btn outline"
+            href="https://wa.me/2347013502404"
+            target="_blank"
+            rel="noopener"
+            >WhatsApp</a
+          >
+        </nav>
+      </div>
+      <div id="mobile-nav" class="drawer" hidden>
+        <nav aria-label="Mobile">
+          <ul>
+            <li><a href="#book" data-drawer-close>Book</a></li>
+            <li><a href="#pricing" data-drawer-close>Pricing</a></li>
+            <li><a href="#trust" data-drawer-close>Trust</a></li>
+            <li><a href="#contact" data-drawer-close>Contact</a></li>
+            <li>
+              <a
+                href="https://www.instagram.com/myafricars"
+                target="_blank"
+                rel="noopener"
+                data-drawer-close
+                >Instagram</a
+              >
+            </li>
+            <li>
+              <button
+                id="themeToggleMobile"
+                class="btn ghost"
+                aria-pressed="false"
+                aria-label="Toggle theme"
+              >
+                Theme
+              </button>
+            </li>
+            <li><a class="btn cta" href="tel:+2347013502404">Call</a></li>
+            <li>
+              <a
+                class="btn outline"
+                href="https://wa.me/2347013502404"
+                target="_blank"
+                rel="noopener"
+                >WhatsApp</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="content">
+      <section id="home" class="hero">
+        <div class="wrap hero-grid">
+          <!-- Booking first -->
+          <aside
+            class="booking card reveal"
+            id="book"
+            aria-label="Ride booking wizard"
+          >
+            <h1 class="h3" style="margin: 0 0 6px 0">Book your ride</h1>
+            <p class="sub" style="margin: 0 0 12px 0">
+              Secure • Comfortable • On‑time
+            </p>
+            <div class="progress" aria-hidden="true">
+              <div class="bar" id="progressBar"></div>
+            </div>
+            <div class="stepper" role="tablist" aria-label="Booking steps">
+              <button class="step current" role="tab" aria-selected="true">
+                1
+              </button>
+              <button class="step" role="tab" aria-selected="false">2</button>
+              <button class="step" role="tab" aria-selected="false">3</button>
+            </div>
+
+            <form
+              id="bookingForm"
+              name="ride-enquiry"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              action="success.html"
+              novalidate
+            >
+              <input type="hidden" name="form-name" value="ride-enquiry" />
+              <p class="hidden">
+                <label>Don’t fill this out: <input name="bot-field" /></label>
+              </p>
+
+              <datalist id="place-suggestions">
+                <option value="Uyo City Centre"></option>
+                <option
+                  value="Victor Attah International Airport (QUO)"
+                ></option>
+                <option value="Ibom Icon Hotel & Golf Resort"></option>
+                <option value="Shelter Afrique Junction"></option>
+                <option value="Ewet Housing Estate"></option>
+              </datalist>
+
+              <!-- Step 1: Service & Route -->
+              <fieldset class="wizard-step active" data-step="1">
+                <legend class="h4">Service & route</legend>
+
+                <div class="form-row">
+                  <div class="field">
+                    <label for="service">Service</label>
+                    <select id="service" name="service" required>
+                      <option value="">Select…</option>
+                      <option>Airport transfer</option>
+                      <option>Intrastate</option>
+                      <option>Interstate</option>
+                      <option>Uyo Half Day</option>
+                      <option>Uyo Full Day</option>
+                      <option>Wedding Full Day</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="pickup">Pickup</label>
+                    <div class="swap-row">
+                      <input
+                        id="pickup"
+                        name="pickup"
+                        list="place-suggestions"
+                        required
+                        autocomplete="address-line1"
+                        inputmode="text"
+                      />
+                      <button
+                        class="btn ghost small"
+                        id="swap"
+                        type="button"
+                        aria-label="Swap pickup and destination"
+                      >
+                        ⇅ Swap
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="stops"></div>
+                <button
+                  class="btn ghost small"
+                  id="addStop"
+                  type="button"
+                  aria-controls="stops"
+                >
+                  + Add stop
+                </button>
+
+                <div class="field">
+                  <label for="destination">Destination</label>
+                  <input
+                    id="destination"
+                    name="destination"
+                    list="place-suggestions"
+                    required
+                    autocomplete="address-line1"
+                    inputmode="text"
+                  />
+                </div>
+              </fieldset>
+
+              <!-- Step 2: When & Duration -->
+              <fieldset class="wizard-step" data-step="2">
+                <legend class="h4">When & duration</legend>
+
+                <input type="hidden" id="when" name="when" value="ASAP" />
+                <div class="seg" role="group" aria-label="When">
+                  <button type="button" class="chip active" data-when="ASAP">
+                    ASAP
+                  </button>
+                  <button type="button" class="chip" data-when="Later">
+                    Schedule
+                  </button>
+                </div>
+
+                <div
+                  class="row-2 when-fields"
+                  aria-live="polite"
+                  aria-atomic="true"
+                >
+                  <div>
+                    <label for="date">Date</label>
+                    <input
+                      id="date"
+                      name="date"
+                      type="date"
+                      disabled
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label for="time">Time</label>
+                    <input
+                      id="time"
+                      name="time"
+                      type="time"
+                      disabled
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="row-2">
+                  <div>
+                    <label for="durationUnit">Duration unit</label>
+                    <select id="durationUnit" name="duration_unit" required>
+                      <option value="days">Days</option>
+                      <option value="weeks">Weeks (25% off)</option>
+                      <option value="months">Months (40% off)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="durationQty">Quantity</label>
+                    <input
+                      id="durationQty"
+                      name="duration_qty"
+                      type="number"
+                      min="1"
+                      step="1"
+                      value="1"
+                      required
+                    />
+                  </div>
+                </div>
+                <p class="micro">
+                  Discounts auto‑apply to the review price. Day‑based services
+                  multiply by days; ride‑based multiply by rides.
+                </p>
+              </fieldset>
+
+              <!-- Step 3: Details & review -->
+              <fieldset class="wizard-step" data-step="3">
+                <legend class="h4">Your details</legend>
+                <div class="row-2">
+                  <div>
+                    <label for="name">Name</label>
+                    <input
+                      id="name"
+                      name="name"
+                      required
+                      autocomplete="name"
+                      inputmode="text"
+                    />
+                  </div>
+                  <div>
+                    <label for="phone">Phone</label>
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      required
+                      autocomplete="tel"
+                      inputmode="tel"
+                      placeholder="+234-701-350-2404"
+                    />
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="notes"
+                    >Notes (flight no., special requests)</label
+                  >
+                  <textarea id="notes" name="notes" rows="4"></textarea>
+                </div>
+
+                <div class="review card">
+                  <div class="review-row">
+                    <strong>Service:</strong> <span id="reviewService">—</span>
+                  </div>
+                  <div class="review-row">
+                    <strong>Route:</strong> <span id="reviewRoute">—</span>
+                  </div>
+                  <div class="review-row">
+                    <strong>When:</strong> <span id="reviewWhen">—</span>
+                  </div>
+                  <div class="review-row">
+                    <strong>Duration:</strong>
+                    <span id="reviewDuration">—</span>
+                  </div>
+                  <div class="review-row">
+                    <strong>Price:</strong> <span id="reviewPrice">—</span>
+                  </div>
+                  <div class="review-row">
+                    <strong>Contact:</strong> <span id="reviewContact">—</span>
+                  </div>
+                </div>
+                <input type="hidden" name="summary" id="summary" />
+                <input type="hidden" name="price_from" id="price_from" />
+                <input
+                  type="hidden"
+                  name="computed_price"
+                  id="computed_price"
+                />
+              </fieldset>
+
+              <div class="wizard-nav">
+                <button type="button" class="btn ghost" id="prevStep" disabled>
+                  Back
+                </button>
+                <button type="button" class="btn cta glow" id="nextStep">
+                  Next
+                </button>
+                <button
+                  type="submit"
+                  class="btn cta glow"
+                  id="submitBtn"
+                  hidden
+                >
+                  Request ride
+                </button>
+              </div>
+              <p class="micro">
+                Email notifications to <strong>info@myafricars.com</strong>:
+                Netlify → Forms → Notifications.
+              </p>
+            </form>
+          </aside>
+
+          <!-- Hero copy -->
+          <div class="hero-copy reveal">
+            <h2>
+              Seamless rides,<br /><span class="accent">sophisticated</span>
+              experience
+            </h2>
+            <p class="sub">
+              Uber‑style simplicity with AfriCars finesse. Book in seconds, get
+              quick confirmation, and ride in comfort.
+            </p>
+            <div class="cta-row">
+              <a
+                class="btn outline"
+                href="https://wa.me/2347013502404"
+                target="_blank"
+                rel="noopener"
+                >Chat on WhatsApp</a
+              >
+              <a class="btn outline" href="#pricing">See pricing</a>
+              <a
+                class="btn outline"
+                href="https://www.instagram.com/myafricars"
+                target="_blank"
+                rel="noopener"
+                >Instagram</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing -->
+      <section id="pricing" class="pricing reveal">
+        <div class="wrap">
+          <h2>Transparent pricing</h2>
+          <p class="muted">“From” prices. Weeks −25% · Months −40%.</p>
+          <div class="price-grid">
+            <div class="price card">
+              <h3>Airport transfer</h3>
+              <div class="amt">From ₦40,000</div>
+            </div>
+            <div class="price card">
+              <h3>Intrastate</h3>
+              <div class="amt">From ₦60,000</div>
+            </div>
+            <div class="price card">
+              <h3>Interstate</h3>
+              <div class="amt">From ₦100,000</div>
+            </div>
+            <div class="price card">
+              <h3>Uyo Half Day</h3>
+              <div class="amt">From ₦70,000</div>
+            </div>
+            <div class="price card">
+              <h3>Uyo Full Day</h3>
+              <div class="amt">From ₦100,000</div>
+            </div>
+            <div class="price card">
+              <h3>Wedding Full Day</h3>
+              <div class="amt">From ₦120,000</div>
+            </div>
+          </div>
+          <p class="micro">
+            We are fully cashless — POS or bank transfer only.
+          </p>
+        </div>
+      </section>
+
+      <!-- Trust -->
+      <section id="trust" class="trust reveal">
+        <div class="wrap trust-grid">
+          <div>
+            <h2>Safety & transparency</h2>
+            <ul class="bullets">
+              <li>Daily vehicle checks, in‑date insurance & papers</li>
+              <li>Uniformed drivers • No cash‑gift policy</li>
+              <li>On‑time pickup • Clean interior guaranteed</li>
+            </ul>
+            <div class="badges">
+              <span class="badge">★ 4.9 Rated</span>
+              <span class="badge">Insured</span>
+              <span class="badge">ID‑Verified</span>
+              <span class="badge">Cashless</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="contact reveal">
+        <div class="wrap contact-grid">
+          <div>
+            <h2>Call or WhatsApp</h2>
+            <ul class="contact-list">
+              <li>📞 <a href="tel:+2347013502404">+234-701-350-2404</a></li>
+              <li>
+                💬
+                <a
+                  href="https://wa.me/2347013502404"
+                  target="_blank"
+                  rel="noopener"
+                  >WhatsApp</a
+                >
+              </li>
+              <li>
+                ✉️ <a href="mailto:info@myafricars.com">info@myafricars.com</a>
+              </li>
+              <li>
+                📸
+                <a
+                  href="https://www.instagram.com/myafricars"
+                  target="_blank"
+                  rel="noopener"
+                  >Instagram</a
+                >
+              </li>
+              <li>📍 Uyo, Nigeria</li>
+            </ul>
+          </div>
+          <div class="card mini-cta">
+            <h3 class="h4">Quick enquiry</h3>
+            <form
+              name="quick-enquiry"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              action="success.html"
+            >
+              <input type="hidden" name="form-name" value="quick-enquiry" />
+              <p class="hidden">
+                <label>Don’t fill this out: <input name="bot-field" /></label>
+              </p>
+              <label for="qname">Name</label>
+              <input id="qname" name="name" required />
+              <label for="qtel">Phone</label>
+              <input id="qtel" name="phone" type="tel" required />
+              <button class="btn cta glow" type="submit">Send</button>
+              <p class="micro">We respond fast during operating hours.</p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>© <span id="year"></span> AfriCars • Frowork Ltd (RC 8090661)</p>
+        <nav aria-label="Footer">
+          <a href="#book">Book</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#trust">Policies</a>
+          <a
+            href="https://www.instagram.com/myafricars"
+            target="_blank"
+            rel="noopener"
+            >Instagram</a
+          >
+        </nav>
+      </div>
+    </footer>
+
+    <div class="sticky-cta">
+      <a class="btn cta glow" href="#book">Book</a>
+      <a class="btn outline" href="tel:+2347013502404">Call</a>
+      <button
+        class="btn ghost"
+        id="themeToggleSticky"
+        aria-pressed="false"
+        aria-label="Toggle theme"
+      >
+        Theme
+      </button>
+    </div>
+  </body>
+</html>
