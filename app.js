@@ -337,7 +337,7 @@ safe(function () {
       json[key] = value;
       console.log(json[key], " ", value);
     });
-    console.log("Summary:", json);
+    console.log("Summary:", JSON.stringify(json));
 
     // Show loading state (optional)
     submitBtn.disabled = true;
@@ -347,9 +347,7 @@ safe(function () {
     fetch("https://hooks.zapier.com/hooks/catch/24260943/ut9x0z9/", {
       // Change URL to your backend endpoint
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+
       body: JSON.stringify(json),
     })
       .then((res) => {
